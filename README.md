@@ -1,13 +1,25 @@
 # Read Me
-This challenge can be used to enrollment Subscribers and add dependants under them. This is written using the Spring Boot framework. 
-The stack includes the following 
-1. **Spring Boot** <br>
+## Requirements:
+The application we will be building will need to be able to do these things:
+- Add a new enrollee
+- Modify an existing enrollee
+- Remove an enrollee entirely
+- Add dependents to an enrollee
+- Remove dependents from an enrollee
+- Modify existing dependents
+
+# Introduction:
+This project is build to accept enrollment of Subscribers and add their dependants, based on the requirements stated above. This is written using the Spring Boot framework. 
+
+**The stack includes the following 
+1. ***Spring Boot*** <br>
   a. JPA - for persistence<br>
   b. mySql connector for database<br>
   c. modelmapper - to convert beans to entities<br>
   d. lombok - for POJO access helper<br>
   c. swagger - for exposing the restful functions through UI<br>
-2. **MySql Database**<br>
+2. ***MySql Database***<br>
+
 <br>
 **Functionality:**<br>
 A Subscriber is the head of household/holds the coverage and holds the subscription, the subscriber sends the information through enrollment channel and enrollment channel would use this API to enroll the subscriber. Subscriber can also have dependents (members). The activation status is an integer which can hold status of where the application is and would provide the latest of the status (It can also be used as 1/0 for true or false)
@@ -16,6 +28,9 @@ A Subscriber is the head of household/holds the coverage and holds the subscript
 An Entity to be created "Member_Master", both subscriptions and dependents would be considered as part of the entity, the only difference between a subscriber and member would be that for Subscribers, the subscriptionid and memberid would be the same. The Subscription id would be the same for the entire family.
 There can be any number of dependents associated to a subscription. Updates can be done to both subscribers and members. Deletes are considered as soft-delete, the membership status would help understand that the subscription or a member is termed/deleted.
 <br>
+<br>
+<br>
+
 **Table Structure:**<br>
     `subscription_seq_id` bigint NOT NULL, - This is the auto generated id and is unique for every member.<br>
     `activation_status` varchar(255) NOT NULL, - This holds the status of enrollment.<br>
