@@ -37,6 +37,7 @@ Table Structure:<br>
 <br>
 <br>
 <br>
+![Image of Member Controller - Swagger UI](https://github.com/venkats3/pub/blob/master/member-controller.png)
 The restful API provides the following functions
 
 HTTP Method: GET<br>
