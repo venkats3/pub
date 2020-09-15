@@ -1,4 +1,4 @@
-# Read Me First
+# Read Me
 This challenge can be used to enrollment Subscribers and add dependants under them. This is written using the Spring Boot framework. 
 The stack includes the following 
 1. **Spring Boot** <br>
