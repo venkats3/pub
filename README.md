@@ -42,45 +42,55 @@ The restful API provides the following functions
 
 ### findMemberById
 HTTP Method: GET<br>
-End Point: ​/enrollment​/api​/members​/{subscriptionId} <br>
-controllerfunctionname: findMemberById<br>
+End Point: ​/enrollment​/api​/v1​/members​/{subscriptionId}<br>
+controller function name: findMemberById<br>
 
 ### findMemberById
 HTTP Method: GET<br>
-End Point: ​/enrollment​/api​/members​/{subscriptionId}​/{memberId}<br>
-controllerfunctionname: findMemberById <br>
+End Point: /enrollment​/api​/v1​/members​/{subscriptionId}​/{memberId}<br>
+controller function name: findMemberById <br>
 
 ### newMember
 HTTP Method: POST<br>
-End Point: ​/enrollment​/api​/members​/newMember<br>
-controllerfunctionname: newMember<br>
+End Point: /enrollment​/api​/v1​/members​/newMember<br>
+controller function name: newMember<br>
 
 ### newSubscriber
 HTTP Method: POST<br>
-End Point: ​/enrollment​/api​/members​/newSubscriber<br>
-controllerfunctionname: newSubscriber<br>
+End Point: /enrollment​/api​/v1​/members​/newSubscriber<br>
+controller function name: newSubscriber<br>
 
 ###  updateMember
 HTTP Method: PUT<br>
-End Point: ​/enrollment​/api​/members​/updateMember<br>
-controllerfunctionname: updateMember<br>
+End Point: /enrollment​/api​/v1​/members​/updateMember<br>
+controller function name: updateMember<br>
 
 ### updateSubscriber
 HTTP Method: PUT<br>
-End Point: ​/enrollment​/api​/members​/updateSubscriber<br>
-controllerfunctionname: updateSubscriber<br>
+End Point: /enrollment​/api​/v1​/members​/updateSubscriber<br>
+controller function name: updateSubscriber<br>
 
 ### deleteMember
 HTTP Method: DELETE<br>
-End Point: ​/enrollment​/api​/members​/deleteMember​/{subscriptionId}​/{memberId}<br>
-controllerfunctionname: deleteMember<br>
+End Point: /enrollment​/api​/v1​/members​/deleteMember​/{subscriptionId}​/{memberId}<br>
+controller function name: deleteMember<br>
 
 ### deleteSubscription
 HTTP Method: DELETE<br>
-End Point: ​/enrollment​/api​/members​/deleteSubscriber​/{subscriptionId}<br>
-controllerfunctionname: deleteSubscription<br>
+End Point: /enrollment​/api​/v1​/members​/deleteSubscriber​/{subscriptionId}<br>
+controller function name: deleteSubscription<br>
 <br>
+
 # Getting Started
+
+# Building and Running
+1. Download the source file from [GitHub](https://github.com/venkats3/pub)
+2. Logon to MySql database run the [Script](https://github.com/venkats3/pub/blob/master/table_schema.sql%3B)
+3. mvn clean install - This should generate demo-0.0.1-SNAPSHOT.jar (under target Spring-Workspace\enrollment-rest\membership-service\target\demo-0.0.1-SNAPSHOT.jar)
+4. Run the app java -jar demo-0.0.1-SNAPSHOT.jar
+5. go to [link to Swagger](http://localhost:8080/enrollment/swagger-ui/#/) to access the restful services created.
+
+
 
 ### Reference Documentation
 For further reference, please consider the following sections:

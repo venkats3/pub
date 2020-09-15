@@ -1,3 +1,7 @@
+use mysql 
+create database enrollment
+flush;
+
 use mysql;
 CREATE USER 'enrapp'@'localhost' IDENTIFIED BY 'enrapp';
 GRANT ALL ON *.* TO 'enrapp'@'localhost';

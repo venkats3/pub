@@ -22,7 +22,7 @@ import com.demo.enrollment.membership.validation.MemberException;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/v1/members")
 @Slf4j
 public class MembershipController {
 
