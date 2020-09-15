@@ -54,122 +54,84 @@ public class MembershipController {
 	}
 
 	@PostMapping(value = "/newSubscriber", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> newSubscriber(@RequestBody MemberMasterDto reqMemberMasterDto,
-			UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<MemberMasterDto> newSubscriber(@RequestBody MemberMasterDto reqMemberMasterDto) {
 
 		MemberMasterDto memberMasterDto = memberFacade
 				.getMemberBySubscriptionId(reqMemberMasterDto.getSubscriptionId());
 
 		if (memberMasterDto != null) {
-			// memberMasterDto = memberFacade.updateMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
-			reqMemberMasterDto.setResponseStatus("Member Already found - Cannot create");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
+			reqMemberMasterDto.setResponseStatus("Member Already found - Cannot create");			
 			return ResponseEntity.ok(reqMemberMasterDto);
 		} else {
 			memberMasterDto = memberFacade.createMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
-			memberMasterDto.setResponseStatus("New Member Created");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
+			memberMasterDto.setResponseStatus("New Member Created");			
 			return ResponseEntity.ok(memberMasterDto);
 		}
 
 	}
 
 	@PutMapping(value = "/updateSubscriber", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> updateSubscriber(@RequestBody MemberMasterDto reqMemberMasterDto,
-			UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<MemberMasterDto> updateSubscriber(@RequestBody MemberMasterDto reqMemberMasterDto) {
 		MemberMasterDto memberMasterDto = null;
 		if (reqMemberMasterDto.getSubscriptionId().equals(reqMemberMasterDto.getMemberId())) {
 
 			memberMasterDto = memberFacade.getMemberBySubscriptionId(reqMemberMasterDto.getSubscriptionId());
 		} else {
-			HttpHeaders headers = new HttpHeaders();
 			reqMemberMasterDto.setResponseStatus("SubscriptionId and Member Id should be the same, please validate");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(reqMemberMasterDto);
 		}
 		if (memberMasterDto != null) {
 			memberMasterDto = memberFacade.updateMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
 			memberMasterDto.setResponseStatus("Member Updated");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(memberMasterDto);
 		} else {
 			// memberMasterDto = memberFacade.createMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
 			reqMemberMasterDto.setResponseStatus("Member data Not found to update");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(reqMemberMasterDto);
 		}
 
 	}
 
 	@PostMapping(value = "/newMember", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> newMember(@RequestBody MemberMasterDto reqMemberMasterDto,
-			UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<MemberMasterDto> newMember(@RequestBody MemberMasterDto reqMemberMasterDto) {
 
 		MemberMasterDto memberMasterDto = memberFacade.getMemberBySubscriptionIdAndMemberId(
 				reqMemberMasterDto.getSubscriptionId(), reqMemberMasterDto.getMemberId());
 
 		if (memberMasterDto != null) {
-			// memberMasterDto = memberFacade.updateMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
 			reqMemberMasterDto.setResponseStatus("Member Already found - Cannot create");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(reqMemberMasterDto);
 		} else {
 			memberMasterDto = memberFacade.createMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
 			memberMasterDto.setResponseStatus("New Member Created");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(memberMasterDto);
 		}
 
 	}
 
 	@PutMapping(value = "/updateMember", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> updateMember(@RequestBody MemberMasterDto reqMemberMasterDto,
-			UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<MemberMasterDto> updateMember(@RequestBody MemberMasterDto reqMemberMasterDto) {
 
 		MemberMasterDto memberMasterDto = memberFacade.getMemberBySubscriptionIdAndMemberId(
 				reqMemberMasterDto.getSubscriptionId(), reqMemberMasterDto.getMemberId());
 
 		if (memberMasterDto != null) {
 			memberMasterDto = memberFacade.updateMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
 			memberMasterDto.setResponseStatus("Member data updated");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(memberMasterDto);
 		} else {
-			// memberMasterDto = memberFacade.createMember(reqMemberMasterDto);
-			HttpHeaders headers = new HttpHeaders();
 			reqMemberMasterDto.setResponseStatus("Member Not found, please check the data");
-			headers.setLocation(
-					ucBuilder.path("/api/members/{id}").buildAndExpand(reqMemberMasterDto.getSubscriptionId()).toUri());
 			return ResponseEntity.ok(reqMemberMasterDto);
 		}
 
 	}
 
 	@DeleteMapping(value = "/deleteSubscriber/{subscriptionId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> deleteSubscription(@PathVariable String subscriptionId, UriComponentsBuilder ucBuilder) {
-
+	public ResponseEntity<?> deleteSubscription(@PathVariable String subscriptionId) {
 		MemberMasterDto memberMasterDto = memberFacade.getMemberBySubscriptionId(subscriptionId);
-
 		if (memberMasterDto != null) {
 			memberMasterDto = memberFacade.deleteSubscription(memberMasterDto, null);
-
 			memberMasterDto.setResponseStatus("Subscriber Terminated");
-
 			return ResponseEntity.ok(memberMasterDto);
 		} else {
 			return ResponseEntity.ok("error: Subscriber Not Found");
@@ -178,16 +140,11 @@ public class MembershipController {
 	}
 
 	@DeleteMapping(value = "/deleteMember/{subscriptionId}/{memberId}")
-	public ResponseEntity<?> deleteMember(@PathVariable String subscriptionId, @PathVariable String memberId,
-			UriComponentsBuilder ucBuilder) {
-
+	public ResponseEntity<?> deleteMember(@PathVariable String subscriptionId, @PathVariable String memberId) {
 		MemberMasterDto memberMasterDto = memberFacade.getMemberBySubscriptionIdAndMemberId(subscriptionId, memberId);
-
 		if (memberMasterDto != null) {
 			memberMasterDto = memberFacade.deleteMember(memberMasterDto, null);
-
 			memberMasterDto.setResponseStatus("Member Terminated");
-
 			return ResponseEntity.ok(memberMasterDto);
 		} else {
 			return ResponseEntity.ok("error: Member Not Found");

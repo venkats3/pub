@@ -103,8 +103,6 @@ public class MemberFacade {
 	}
 
 	public MemberMasterDto createMember(MemberMasterDto reqMemberMasterDto) {
-		// MemberMaster memberMasterEntity = modelMapper.map(reqMemberMasterDto,
-		// MemberMaster.class);
 		MemberMaster memberMasterEntity = convertToMemberMaster(reqMemberMasterDto);
 		MemberMaster createdMember = membershipService.createMember(memberMasterEntity);
 		MemberMasterDto createdMemberDto = convertToMemberMasterDto(createdMember);

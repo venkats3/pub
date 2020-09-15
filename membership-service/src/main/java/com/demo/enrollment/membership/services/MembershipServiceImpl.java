@@ -75,8 +75,9 @@ public class MembershipServiceImpl implements MembershipService {
 	}
 
 	public MemberMaster deleteSubscription(MemberMaster memberMaster, Calendar asOfDate) throws MemberException {
-		if (asOfDate == null) {
-			asOfDate = Calendar.getInstance();
+		Calendar deleteDate = Calendar.getInstance();
+		if (asOfDate != null) {
+			deleteDate = asOfDate;
 		}
 		if (memberMaster.getSubscriptionId() != null) {
 			List<MemberMaster> dbMemberMasterList = membershipRepository
@@ -85,7 +86,7 @@ public class MembershipServiceImpl implements MembershipService {
 				try {
 					MemberMaster subscriber = null;
 					for (MemberMaster dbMemberMaster : dbMemberMasterList) {
-						dbMemberMaster.setDeletionDate(asOfDate);
+						dbMemberMaster.setDeletionDate(deleteDate);
 						dbMemberMaster.setMembershipStatus("N");
 						addAuditing(dbMemberMaster);
 						MemberMaster updatedMemberMaster = membershipRepository.save(dbMemberMaster);
@@ -109,15 +110,16 @@ public class MembershipServiceImpl implements MembershipService {
 	}
 
 	public MemberMaster deleteMember(MemberMaster memberMaster, Calendar asOfDate) throws MemberException {
-		if (asOfDate == null) {
-			asOfDate = Calendar.getInstance();
+		Calendar deleteDate = Calendar.getInstance();
+		if (asOfDate != null) {
+			deleteDate = asOfDate;
 		}
 		if (memberMaster.getSubscriptionId() != null) {
 			MemberMaster dbMemberMaster = membershipRepository
 					.findBySubscriptionIdAndMemberId(memberMaster.getSubscriptionId(), memberMaster.getMemberId());
 			if (dbMemberMaster != null) {
 				try {
-					memberMaster.setDeletionDate(asOfDate);
+					memberMaster.setDeletionDate(deleteDate);
 					dbMemberMaster.setMembershipStatus("N");
 					addAuditing(memberMaster);
 					MemberMaster updatedMemberMaster = membershipRepository.save(memberMaster);
