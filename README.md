@@ -37,7 +37,7 @@ There can be any number of dependents associated to a subscription. Updates can 
 <br>
 <br>
 <br>
-![Image of Member Controller - Swagger UI](https://github.com/venkats3/pub/blob/master/member-controller.png)
+![Image of Member Controller - Swagger UI](https://github.com/venkats3/pub/blob/master/appScreenShots/member-controller.png)
 The restful API provides the following functions
 
 ### findMemberById
@@ -90,33 +90,33 @@ controller function name: deleteSubscription<br>
 4. Run the app java -jar demo-0.0.1-SNAPSHOT.jar
 5. go to [link to Swagger](http://localhost:8080/enrollment/swagger-ui/#/) to access the restful services created.
 
-![Image of Member Controller - Swagger UI](https://github.com/venkats3/pub/blob/master/maven-install-output.png)
+![Image of Member Controller - Swagger UI](https://github.com/venkats3/pub/blob/master/appScreenShots/maven-install-output.png)
 
 
 # Screenshots of Functions
 
 ## Add New Subscriber
-![Image of New Subs](https://github.com/venkats3/pub/blob/master/00-NewSubscriberResponse.png)
+![Image of New Subs](https://github.com/venkats3/pub/blob/master/appScreenShots/00-NewSubscriberResponse.png)
 ## Add New Member
-![Image of New Memb](https://github.com/venkats3/pub/blob/master/01-NewMemberResponse.png)
+![Image of New Memb](https://github.com/venkats3/pub/blob/master/appScreenShots/01-NewMemberResponse.png)
 
 ## Find a Subscriber
-![Image of Find Subs](https://github.com/venkats3/pub/blob/master/03-FindSubscriberResponse.png)
+![Image of Find Subs](https://github.com/venkats3/pub/blob/master/appScreenShots/03-FindSubscriberResponse.png)
 
 ## Find a Member
-![Image of Find Memb](https://github.com/venkats3/pub/blob/master/04-FindMemberReponse.png)
+![Image of Find Memb](https://github.com/venkats3/pub/blob/master/appScreenShots/04-FindMemberReponse.png)
 
 ## Update a Subscriber
-![Image of Update Subs](https://github.com/venkats3/pub/blob/master/05-UpdateSubscriber.png)
+![Image of Update Subs](https://github.com/venkats3/pub/blob/master/appScreenShots/05-UpdateSubscriber.png)
 
 ## Update a Member
-![Image of Update Memb](https://github.com/venkats3/pub/blob/master/06-UpdateMember.png)
+![Image of Update Memb](https://github.com/venkats3/pub/blob/master/appScreenShots/06-UpdateMember.png)
 
 ## Delete a Subscriber
-![Image of delete Subs](https://github.com/venkats3/pub/blob/master/07-DeleteSubscriber.png)
+![Image of delete Subs](https://github.com/venkats3/pub/blob/master/appScreenShots/07-DeleteSubscriber.png)
 
 ## Delete a Member
-![Image of delete Subs](https://github.com/venkats3/pub/blob/master/08-DeleteMember.png)
+![Image of delete Subs](https://github.com/venkats3/pub/blob/master/appScreenShots/08-DeleteMember.png)
 
 
 ### Reference Documentation
